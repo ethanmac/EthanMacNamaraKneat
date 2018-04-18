@@ -1,0 +1,130 @@
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Documentation</title>
+<link rel="stylesheet" href="./bootstrap.css">
+
+<script src="./saved_resource"></script>
+<script src="./bootstrap.min.js.download"></script>
+
+</head>
+<body style="">
+<div class="well well-lg">
+  <h1>Documentation</h1>
+</div>
+
+    <div class="row">
+		<div class="col-sm-offset-1 col-lg-10">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">Introduction</h3>
+				</div>
+				<div class="panel-body">
+					The aim of this document is to briefly breakdown the usage of the program and give an overview of the classes involved <br><br>
+					<ul>
+						<li>More information for the SWAPI can be found at  @ <a href="https://swapi.co/documentation">https://swapi.co/documentation</a>
+						<li>More information for the SharpTrooper Helper Library used can be found at @ <a href="https://github.com/olcay/SharpTrooper">https://github.com/olcay/SharpTrooper</a>  </li>
+						<li>For more More information about each class and its methods see code comments
+					</li></ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="row">
+		<div class="panel with-nav-tabs panel-default">
+		
+
+			
+			<div class="panel-body">
+				<div class="tab-content">
+					<div class="tab-pane fade active in" id="tab1default">
+						<div class="col-sm-offset-1 col-lg-10">
+							<fieldset>
+								<legend>How to run program</legend>
+									Navigate to the release folder and double click the exe file.
+									<br><br>
+									When the cmd window opens a prompt asking to enter the journey length is shown or type help for more information.
+									<ul>
+										<li>If a valid number is entered the program will display a list of ships along with the stops needed to restock supplies.<b>*Note: For Starships that didnt have a known MGLT value a message is shown informing the user the calculation couldnt be completed </b></li>
+										<li>HELP is entered more information about the program and its options is given</li>
+										<li>EXIT will kill the program</li>
+										<li><b>Staging</b>: for hot fixes and final hardening of a release</li>
+							
+									</ul>
+
+									<br><br>
+									<h4><b><u>Successful Result</u></b></h4>
+										<ul>
+										<li>Fig 1 shows an example of a section of a successful result</li>
+										<img style="max-width: 100%;padding:1px;border:thin solid black;" src="./result.png">
+									 	<figcaption><b>Fig 1 .Source tree Creating a branch.</b></figcaption>	
+										</ul>
+										
+													
+									<br><br>
+									<legend>Project Structure</legend>
+									<h4><b><u></u></b></h4>
+									 The Basic Structure of the Project is shown in Fig2.These are summarised below.StarShipManager and StarShipService will be covered in more detail as they are the most complex areas.
+									 <br><br>
+									 <img style="max-width: 100%;padding:1px;border:thin solid black;" src="./projectstruc.png">
+									 <figcaption><b>Fig 2.Project Structure</b></figcaption>	
+										<ul>
+										<li><b>Enums</b>:Holds the classes responsible for holding s used in the program such as hours in a day or the state resulting from a usersInput.</li>
+										<li><b>Interfaces</b>: Classes used to increase code reusability incase we want to expand out from Starships sometime in the future </li>
+										<li><b>CommandLineService</b>: Responsible for the reading and writing of data to the command line.</li>
+										<li><b>StarShipManager:</b>The core class of the Project that initalises the program and pulls in all the services needed to run program </li>
+										<li><b>StarShipService</b>Service for the starship.It is responsible for getting the list of starships,converting input durations to useable values and thecalculation of the number of restock stops needed</li>
+										<li><b>StarShipServiceFactory</b>: Used to create an instance of starship factory(Encapsulates creation of service)</li>
+										<li><b>StarShipUnitTests</b>: Unit tests for the main functions in the project</li>
+
+
+										</ul>
+										<br><br>
+
+
+										<h5><b><u>StarShipService</u></b>
+										<ul>
+										 <li><b>getAllResource()</b>Implements IResourceService ->Leverages SharpTrooper Helper library to retrieve all starships.Swapi only returns one page at a time so several calls had to be made in order to retrieve all ships:Returns List of StartShips </li>
+										 <li><b>hoursFromTimeDurationDesc(string consumablesDuration)</b> ->takes the consumables length description such as '2 Months' and returns number of hours in that description.NOTE:For this implementation a month = 30 days : Returns int hours </li>
+										 <li><b>calStopsForJourney(int journeylength,int perHourSpeed,string consumablesDuration(int journeylength,int perHourSpeed,string consumablesDuration)</b> -> Calculates number of restock stops needed for a ship of max per hour speed = perHourSpeed  to cover MGLT distance = journeylength : Returns int number of stops </li>
+										 <li><b>noStopsForShips(int journeyLength,List<Starship> starships)</b> -> :Returns a Dictionary of shipName ,refuelStops that a ship will need to cover the given distance :  </li>
+										</ul>
+
+										<h5><b><u>StarShipManager</u></b>
+										<ul>
+										<li><b>init()</b> ->Gets the StarShip List</li>
+										<li><b>Run()</b> ->Intializes and manages the System loop.The flow of the loop is as follows
+											<ul>
+												<li>Waits for input from the user</li>
+												<li>The Input is parsed into one of 4 states: VALIDNUMBER will start the calculation of Starships stops need,HELP will display more info to the user,CLEAR will clear the command window,EXIT will exit the program and INVALID will inform the user to try again</li>
+											</ul>
+										 </li>
+										 <li><b> PrintHelp()</b> -> Prints the Help message </li>
+										 <li><b> PrintResult(Dictionary<string, int?> starShipStops)</b> -> Prints the StarShip Dictionary contents </li>
+										 <li><b>ParseUserInput(string input)</b> -> Takes a string Input and decides its state VALIDNUMBER,HELP,CLEAR,EXIT or DEFAULT(taken as INVALID)  </li>
+										</ul>
+
+									<legend>Notes</legend>
+									<h4><b><u></u></b></h4>
+									<ul>
+									<li>The values used in this project were Int32.</li>
+									<li>Some of the interfaces or Services may seem trivial but I was thinking along the lines of if the project were to expand.It was also to show off some of the code practices I have learned</li>
+									</ul>
+
+									
+								
+							</fieldset>
+						</div>
+					</div>
+					
+
+
+					</div><i><i>
+		
+				</i></i></div><i><i>
+			</i></i></div><i><i>
+			
+		</i></i></div><i><i>
+	</i></i><i><i>
+
+</i></i></body></html>
