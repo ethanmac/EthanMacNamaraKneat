@@ -1,0 +1,12 @@
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\obj\Release\EthanMacNamaraKneat.csproj.CoreCompileInputs.cache
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\bin\Release\EthanMacNamaraKneat.exe.config
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\bin\Release\EthanMacNamaraKneat.exe
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\bin\Release\EthanMacNamaraKneat.pdb
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\bin\Release\Newtonsoft.Json.dll
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\bin\Release\SharpTrooper.dll
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\bin\Release\Newtonsoft.Json.xml
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\bin\Release\SharpTrooper.pdb
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\obj\Release\EthanMacNamaraKneat.csproj.CopyComplete
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\obj\Release\EthanMacNamaraKneat.exe
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\obj\Release\EthanMacNamaraKneat.pdb
+C:\Users\ethan.macnamara\source\repos\EthanMacNamaraKneat\EthanMacNamaraKneat\obj\Release\EthanMacNamaraKneat.csprojResolveAssemblyReference.cache
